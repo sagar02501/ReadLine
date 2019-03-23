@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+.mat-raised-button.mat-primary {
+  background-color: rgba(108, 122, 137, 1);
+}
+html, body { height: 100%; font-size: 62.5%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%; } }
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%; } }
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%; } }

@@ -1,0 +1,11 @@
+.footer {
+  height: 70px;
+  margin-top: 20px;
+  font-size: 1.6rem;
+  background: rgba(108, 122, 137, 1);
+  display: flex;
+  color: #fff;
+  font-family: 'Nanum Gothic', sans-serif;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,26 @@
+.banner {
+  height: 65vh;
+  background: url(../../assets/img/bg.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner-heading {
+  font-size: 3rem;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: floralwhite;
+  padding: 10rem 20rem;
+  text-align: center;
+}
+h1 {
+  font-size: inherit;
+}
+p {
+  font-size: 1.7rem;
+}
+@media only screen and (max-width: 75em) {
+  .banner-heading {
+    padding: 7rem 5rem; } }

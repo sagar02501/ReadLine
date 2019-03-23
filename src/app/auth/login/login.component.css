@@ -1,0 +1,86 @@
+mat-form-field {
+  width: 100%
+}
+
+mat-spinner {
+  margin: auto;
+}
+#subButton {
+  display: none;
+}
+.book {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 43rem;
+  height: 25rem;
+  perspective: 70rem;
+}
+.cover {
+  background-color: #36354e;
+  transform: rotateY(0deg);
+  width: 22.5rem;
+  height: 25rem;
+}
+.page {
+  top: 0.5rem;
+  left: 0.5rem;
+  background-color: #e9e6c4;
+  transform: rotateY(0deg);
+  width: 22rem;
+  height: 24rem;
+  text-align: left;
+  font-size: 14px;
+  color: #777;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cover, .page {
+  position: absolute;
+  padding: 1rem;
+  transform-origin: 100% 0;
+  border-radius: 5px 0 0 5px;
+  box-shadow: inset 3px 0px 20px rgba(0, 0, 0, 0.2),
+    0px 0px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+.cover.turn {
+  animation: bookCover 3s forwards;
+}
+.page.turn {
+  animation: bookOpen 3s forwards;
+}
+.page.turn button {
+  transform: rotateX(180deg) rotateZ(180deg);
+}
+.page:nth-of-type(1) {
+  animation-delay: 0.05s;
+}
+.page:nth-of-type(2) {
+  animation-delay: 0.33s
+}
+
+@keyframes bookOpen {
+  30% { z-index: 999 }
+  100% {  transform: rotateY(180deg);
+    z-index: 999;}
+}
+@keyframes bookCover {
+  30% { z-index: 999 }
+  100% {  transform: rotateY(180deg);
+    z-index: 1;}
+}
+@media only screen and (max-width: 40em) {
+  .book {
+    transform: rotateZ(90deg); }
+    form {
+      transform: rotateZ(-90deg);
+    }
+    .page.turn button {
+      transform: rotateX(180deg) rotateZ(90deg);
+    }}

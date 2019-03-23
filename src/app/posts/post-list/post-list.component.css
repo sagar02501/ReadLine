@@ -1,0 +1,143 @@
+:host{
+  display: block;
+  /* margin-top: 1rem; */
+}
+
+.info-msg {
+  text-align: center;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.post-image {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.post-image img {
+  width: 50%;
+  box-shadow: 1px 1px 5px rosybrown;
+}
+
+mat-paginator {
+  margin-top: 1rem;
+}
+
+.post-list {
+  display: flex;
+  font-family: 'Nanum Gothic', sans-serif;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 1.6rem;
+  width: 85%;
+  margin: auto;
+}
+
+.post {
+  width: 300px;
+  height: 400px;
+  margin-bottom: 20px;
+  padding: 10px;
+  /* background: rgba(0, 0, 0, 0.05); */
+  box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.post:hover .user-likes{
+  opacity: 1;
+}
+.post-title {
+  text-transform: capitalize;
+  width: 100%;
+  background: chocolate;
+  text-align: center;
+  padding: 10px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.post-actions {
+  display: flex;
+  background: cadetblue;
+  color: whitesmoke;
+  width: 100%;
+  text-align: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+.post-actions div {
+  cursor: pointer;
+}
+.post-actions-self i+i {
+  margin-left: 10px;
+}
+.list-actions {
+  height: 10vh;
+  font-family: 'Nanum Gothic', sans-serif;
+  background: rgba(108, 122, 137, 1);
+  margin-bottom: 20px !important;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  width: 85%;
+  margin: auto;
+}
+.list-actions-item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.load-more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.read-more {
+  display: block;
+  cursor: pointer;
+  color: burlywood;
+  text-align: center;
+}
+.user-likes {
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px;
+  /* height: 32px; */
+  /* width: 32px; */
+  /* flex: 1 1; */
+  /* width: 0; */
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  transition: all 0.2s;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+}
+.hover-likes {
+  color: #fff;
+  /* position: absolute; */
+  bottom: 8px;
+  right: 5px;
+  /* display: block; */
+}
+.white {
+  color: #fff;
+}

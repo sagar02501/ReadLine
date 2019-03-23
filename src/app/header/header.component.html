@@ -1,0 +1,22 @@
+<mat-toolbar class="toolbar">
+  <span><a routerLink="/">ReadLine</a></span>
+  <span title="ReadLine" class="phone-display"><a routerLink="/">RL</a></span>
+  <input class="search-box" type="text" [(ngModel)]="searchText" (keyup)="searchList()" placeholder="Search for book name or text">
+  <ul>
+    <li *ngIf="!isSidenav" class="phone-display"><a (click)="toggleSidenav()"><i class="fas fa-bars"></i></a></li>
+    <li *ngIf="isSidenav" class="phone-display"><a (click)="toggleSidenav()"><i class="fas fa-times"></i></a></li>
+    <li *ngIf="isUserAuthenticated"><a mat-button routerLink="/create" routerLinkActive="mat-accent">+New</a></li>
+    <li *ngIf="!isUserAuthenticated"><a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a></li>
+    <li *ngIf="!isUserAuthenticated"><a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a></li>
+    <li *ngIf="isUserAuthenticated"><button mat-button (click)="onLogout()">Logout</button></li>
+  </ul>
+</mat-toolbar>
+
+<div id="sidenav" class="sidenav">
+  <ul *ngIf="isSidenav">
+      <li *ngIf="isUserAuthenticated"><a (click)="toggleSidenav()" mat-button routerLink="/create" routerLinkActive="mat-accent">+New</a></li>
+      <li *ngIf="!isUserAuthenticated"><a (click)="toggleSidenav()" mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a></li>
+      <li *ngIf="!isUserAuthenticated"><a (click)="toggleSidenav()" mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a></li>
+      <li *ngIf="isUserAuthenticated"><button mat-button (click)="onLogout(1)">Logout</button></li>
+    </ul>
+</div>

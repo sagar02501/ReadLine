@@ -1,0 +1,90 @@
+<app-banner></app-banner>
+<div class="list-actions">
+  <div class="list-actions-item most-recent" (click)="sortBy('updatedAt')" [ngClass]="{'white':isRecentSelected}">
+      <i class="fa fa-sort-up" [style.opacity]="order == 1 ? 1 : 0" *ngIf="isRecentSelected"></i>
+      Most Recent&nbsp;
+      <i class="fa fa-sort-down" [style.opacity]="order == -1 ? 1 : 0" *ngIf="isRecentSelected"></i>
+  </div>
+  <div class="list-actions-item most-popular" (click)="sortBy('likes')" [ngClass]="{'white':isPopularSelected}">
+      <i class="fa fa-sort-up" [style.opacity]="order == 1  ? 1 : 0" *ngIf="isPopularSelected"></i>
+      Most Popular&nbsp;
+      <i class="fa fa-sort-down" [style.opacity]="order == -1 ? 1 : 0" *ngIf="isPopularSelected"></i>
+  </div>
+  <div class="list-actions-item sort-by-title" (click)="sortBy('title')" [ngClass]="{'white':isTitleSelected}">
+        <i class="fa fa-sort-up" [style.opacity]="order == 1  ? 1 : 0" *ngIf="isTitleSelected"></i>
+        Sort by Title&nbsp;
+        <i class="fa fa-sort-down" [style.opacity]="order == -1 ? 1 : 0" *ngIf="isTitleSelected"></i>
+  </div>
+</div>
+<div class="post-list" *ngIf="posts.length > 0">
+  <div class="post" *ngFor="let post of posts; let i = index">
+      <div class="post-title">
+        {{post.title}}
+      </div>
+      <div class="post-image" (click)="openViewDialog(i)">
+        <img [src]="post.imagePath" [alt]="post.title">
+      </div>
+      <div class="post-description" (click)="openViewDialog(i)">
+        {{post.content.substr(0, 160)}}
+        <span class="read-more" *ngIf="post.content.length > 160">Read More</span>
+      </div>
+      <div class="post-actions" *ngIf="isUserAuthenticated">
+        <div class="likes">
+            <i class="far fa-heart"></i>{{post.likes}}
+        </div>
+
+          <!-- <button mat-button color="warn">
+              LIKE
+          </button> -->
+          <div class="post-actions-self" *ngIf="isUserAuthenticated && userId === post.creator">
+            <!-- <button mat-button color="primary" [routerLink]="['/edit', post.id]">
+            EDIT
+            </button> -->
+            <i class="fas fa-edit" [routerLink]="['/edit', post.id]"></i>
+            <!-- <button mat-button color="warn" (click)="openDeleteDialog(post.id)">
+              DELETE
+            </button> -->
+            <i class="fas fa-trash" (click)="openDeleteDialog(post.id)"></i>
+          </div>
+      </div>
+      <div class="user-likes" *ngIf="!isUserAuthenticated" [routerLink]="['/auth/login']">
+          <div class="hover-likes">
+              <i class="fas fa-heart"></i>&nbsp;{{post.likes}}
+          </div>
+      </div>
+  </div>
+</div>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<!-- <mat-accordion  multi="true" *ngIf="posts.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+        <p class="mat-body-2">{{post.title}}</p>
+    </mat-expansion-panel-header>
+    <div class="post-image">
+      <img [src]="post.imagePath" [alt]="post.title">
+    </div>
+    <p>{{post.content}}</p>
+    <mat-action-row *ngIf="isUserAuthenticated && userId === post.creator">
+      <button mat-button color="primary" [routerLink]="['/edit', post.id]">
+        EDIT
+      </button>
+      <button mat-button color="warn" (click)="onDelete(post.id)">
+          DELETE
+        </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion> -->
+
+<!-- <mat-paginator [length]="totalPost" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)" *ngIf="posts.length > 0"></mat-paginator> -->
+
+<div class="load-more-btn" *ngIf="!isLoading">
+  <button mat-button color="primary" (click)="onChangedPage()" *ngIf="!noMoreContent">
+    Load More
+  </button>
+  <button mat-button color="primary" *ngIf="noMoreContent" [disabled]=true>
+      No More Content
+  </button>
+</div>
+<p class="info-msg mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No Post found</p>
